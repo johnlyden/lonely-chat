@@ -32,9 +32,7 @@ class Chatroom extends React.Component {
 
         this.setState({
             chats: this.state.chats.concat([{
-                username: "Kevin Hsu",
-                content: <p>{ReactDOM.findDOMNode(this.refs.msg).value}</p>,
-                img: "http://i.imgur.com/Tj5DGiO.jpg",
+                content: <p>{ReactDOM.findDOMNode(this.refs.msg).value}</p>
             }])
         }, () => {
             ReactDOM.findDOMNode(this.refs.msg).value = "";
@@ -42,17 +40,16 @@ class Chatroom extends React.Component {
     }
 
     render() {
-        const username = "Kevin Hsu";
         const { chats } = this.state;
 
         return (
             <div className="chatroom">
-                <h3>Chilltime</h3>
+                <h3>Lonely Chat</h3>
                 <ul className="chats" ref="chats">
                     {
-                        chats.map((chat) => 
-                            <Message chat={chat} user={username} />
-                        )
+                      chats.map((chat) => 
+                          <Message chat={chat} />
+                      )
                     }
                 </ul>
                 <form className="input" onSubmit={(e) => this.submitMessage(e)}>
